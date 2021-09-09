@@ -1,0 +1,18 @@
+Comandos: 
+
+Compilar: gcc *.c -o teste_bst
+Listar os arquivos na pasta: ls
+Executar o arquivo (executável): ./teste_bst
+
+Compilar com a tabela de símbolos para o debug: gcc -g *.c -o teste_bst
+
+Debugar: gdb teste_bst
+    Adicionar ponto de parada: break nome_da_funcao
+    Executar o programa: run
+    Inspecionar variáveis: display nome_da_variável
+    Dar um passo: next
+    Finalizar: quit
+
+
+
+
