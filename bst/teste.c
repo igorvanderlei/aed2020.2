@@ -10,11 +10,14 @@ int main(int argc, char* argv) {
 
     //Inicialização da árvore
     a = NULL;
-
+    printf("maior: %d\n", maior(a));
     a = adicionar(a, 10);
     a = adicionar(a, 15);
     a = adicionar(a, 5);
     a = adicionar(a, 8);
+    printf("maior: %d\n", maior(a));
+
+     a = remover(a, 8);
 
     if(procurar(a, 8) != NULL)
         printf("achou\n");

@@ -44,8 +44,6 @@ Caso base:
 Caso(s) recursivo(s):
 */
 arvore procurar(arvore raiz, int valor){
-
-
       //caso base 1
       if(raiz == NULL) {
          return NULL;
@@ -55,19 +53,70 @@ arvore procurar(arvore raiz, int valor){
       if(raiz-> valor == valor)  {
          return raiz;
       }
-
-
       if(valor >= raiz->valor) {
-        //chamada recursiva para inserir na sub-árvore a direita
         return procurar(raiz->dir,valor);
     } else {
-        //chamada recursiva para inserir na sub-árvore a esquerda
         return procurar(raiz->esq,valor);
     }   
     
 
 }
 
+
+arvore remover (arvore raiz, int valor) {
+      //caso base 1
+      if(raiz == NULL) {
+         return NULL;
+      }
+
+      //Elemento encontrado
+      //Verificar qual caso do remover estamos tratando
+      if(raiz-> valor == valor)  {
+            //Caso 1: Elemento a ser removido não possui filhos
+            if(raiz->esq == NULL && raiz->dir == NULL) {
+                free(raiz);
+                return NULL;
+            }
+            //Caso 2: Elemento possui exatamente um filho
+            //Caso 2a: Elemento possui exatamente um filho esquerdo
+            if(raiz->esq != NULL && raiz->dir == NULL) {
+                no * filho = raiz->esq;
+                free(raiz);
+                return filho;
+            }
+
+            //Caso 2b: Elemento possui exatamente um filho direito
+            //implementar o simétrico
+
+         
+            //Caso 3: Elemento possui os dois filhos
+            if(raiz->esq != NULL && raiz->dir != NULL) {
+                int m = maior(raiz->esq);
+                raiz->valor = m;
+                raiz->esq = remover(raiz->esq, m);
+                return raiz;
+            }   
+      }
+      if(valor >= raiz->valor) {
+        raiz->dir = remover(raiz->dir,valor);
+    } else {
+        raiz->esq = remover(raiz->esq,valor);
+    }   
+
+    return raiz;
+}
+
+int maior(arvore raiz) {
+    if(raiz == NULL) {
+        return -1;
+    }
+
+    no* temp = raiz;
+    while(temp->dir != NULL) {
+       temp = temp->dir;
+    }
+    return temp->valor;
+}
 
 
 

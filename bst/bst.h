@@ -11,6 +11,11 @@ typedef struct no {
 typedef no* arvore;
 
 arvore adicionar (arvore raiz, int valor) ;
+arvore remover (arvore raiz, int valor) ;
+int maior(arvore raiz);
+
+
+
 
 arvore procurar(arvore raiz, int valor);
 
