@@ -7,28 +7,26 @@
 int main(int argc, char* argv) {
     //Declaração de uma variável do "tipo" árvore
     arvore a;
-
+    int opcao, valor;
     //Inicialização da árvore
     a = NULL;
-    printf("maior: %d\n", maior(a));
-    a = adicionar(a, 10);
-    a = adicionar(a, 15);
-    a = adicionar(a, 5);
-    a = adicionar(a, 8);
-    printf("maior: %d\n", maior(a));
 
-     a = remover(a, 8);
+    while(1) {
+        scanf("%d", &opcao);
+        switch(opcao) {
+            case 1:
+                scanf("%d", &valor);
+                a = adicionar(a, valor);
+                break;
+            case 2:
+                preorder(a);
+                printf("\n");
+                break;
 
-    if(procurar(a, 8) != NULL)
-        printf("achou\n");
-    else 
-        printf("nao achou\n");
+            case 99:
+                return 0;
 
-    if(procurar(a, 30) != NULL)
-        printf("achou\n");
-    else 
-        printf("nao achou\n");
+        }
 
-
-    return 0;
+    }    
 }

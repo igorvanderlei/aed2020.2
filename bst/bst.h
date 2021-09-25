@@ -14,6 +14,8 @@ arvore adicionar (arvore raiz, int valor) ;
 arvore remover (arvore raiz, int valor) ;
 int maior(arvore raiz);
 
+void preorder(arvore a);
+
 
 
 

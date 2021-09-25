@@ -118,8 +118,10 @@ int maior(arvore raiz) {
     return temp->valor;
 }
 
-
-
-
-
-
+void preorder(arvore a){
+    if(a != NULL) {
+        printf("[%d]", a->valor);
+        preorder(a->esq);
+        preorder(a->dir);
+    }
+}
