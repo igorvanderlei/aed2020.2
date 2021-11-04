@@ -280,17 +280,19 @@ void remover (int valor, arvore *raiz) {
 
 			//O elemento possui apenas um filho (direito)
 			if(posicao->esq == NULL && posicao->dir != NULL) {
+                arvore filhoDireito;
             //O seu filho direito sobe para a posição do elemento  a ser removido e recebe a cor preta
-				posicao->dir->cor = PRETO;
-                posicao->dir->pai = posicao->pai;
+                filhoDireito = posicao->dir;
+				filhoDireito->cor = PRETO;
+                filhoDireito->pai = posicao->pai;
 
 				if(eh_raiz(posicao)) {
 					*raiz = posicao->dir;
 				} else {
 					if(eh_filho_esquerdo(posicao)) {
-    					posicao->pai->esq = posicao->dir;
+    					posicao->pai->esq = filhoDireito;
 					} else {
-						posicao->pai->dir = posicao->dir;
+						posicao->pai->dir = filhoDireito;
     				}
                          
 				}
@@ -337,7 +339,7 @@ void remover (int valor, arvore *raiz) {
 				posicao = posicao->dir;
 		else 
 				posicao = posicao->esq;
-	}
+	}  // Fim while
 }
 
 /*Realiza a correção da árvore após a remoção de um elemento preto que não possui filhos, ou seja, elimina o nó null o duplo-preto.*/
@@ -359,6 +361,7 @@ void reajustar(arvore *raiz, arvore elemento){
 		 cor(irmao(elemento)) == VERMELHO &&
 		 cor(irmao(elemento)->dir) == PRETO &&
 		 cor(irmao(elemento)->esq) == PRETO ) {
+        
                 //Verifica se é o caso 2 esquerdo ou direito
 				if(eh_filho_esquerdo(elemento))
 						rotacao_simples_esquerda(raiz, elemento->pai);
